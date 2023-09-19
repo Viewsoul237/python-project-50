@@ -2,8 +2,10 @@ import json
 
 
 def generate_diff(file_path1, file_path2):
-    file1 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in json.load(open(file_path1)).items()}
-    file2 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in json.load(open(file_path2)).items()}
+    file1 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in
+             json.load(open(file_path1)).items()}
+    file2 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in
+             json.load(open(file_path2)).items()}
     result = file1 | file2
     final_result = ["{"]
 
