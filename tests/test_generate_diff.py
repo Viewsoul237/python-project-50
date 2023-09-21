@@ -1,25 +1,22 @@
 import os
 
 import pytest
-
 from gendiff import generate_diff
 
-
-@pytest.fixture
-def file1():
-    return os.path.abspath("tests/fixtures/file1.json")
-
-
-@pytest.fixture
-def file2():
-    return os.path.abspath("tests/fixtures/file2.json")
+file1 = os.path.abspath("tests/fixtures/file1.json")
+file2 = os.path.abspath("tests/fixtures/file2.json")
+file1yaml = os.path.abspath("tests/fixtures/file1.yml")
+file2yaml = os.path.abspath("tests/fixtures/file2.yml")
+with open(os.path.abspath("tests/fixtures/result")) as file:
+    expected = file.read()
 
 
-@pytest.fixture
-def expected():
-    with open(os.path.abspath("tests/fixtures/json_result")) as file:
-        return file.read()
-
-
-def test_generate_diff(file1, file2, expected):
-    assert generate_diff(file1, file2) == expected
+@pytest.mark.parametrize(
+    "file_1, file_2",
+    [
+        (file1, file2),
+        (file1yaml, file2yaml),
+    ]
+)
+def test_generate_diff(file_1, file_2, ):
+    assert generate_diff(file_1, file_2) == expected
