@@ -26,9 +26,11 @@ def generate_diff(file_path1, file_path2):
 def define_format(file_path):
     with open(file_path) as file:
         if file_path.endswith("json"):
+            json_data = json.load(file)
             file = {k: str(v).lower() if isinstance(v, bool) else v for k, v in
-                    json.load(file).items()}
+                    json_data.items()}
         else:
+            yaml_data = yaml.load(file, Loader=yaml.Loader)
             file = {k: str(v).lower() if isinstance(v, bool) else v for k, v in
-                    yaml.load(file, Loader=yaml.Loader).items()}
+                    yaml_data.items()}
     return file
