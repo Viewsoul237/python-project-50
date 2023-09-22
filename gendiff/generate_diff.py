@@ -1,26 +1,18 @@
 import json
 
 import yaml
+from gendiff.flat import flat_diff
 
 
-def generate_diff(file_path1, file_path2):
-    file1 = get_data_from_file(file_path1)
-    file2 = get_data_from_file(file_path2)
-    merged_files = file1 | file2
-    final_result = ["{"]
-
-    for key in sorted(merged_files.keys()):
-        if file1.get(key) == file2.get(key):
-            final_result.append(f"    {key}: {file1[key]}")
-        elif key in file1 and key in file2:
-            final_result.append(f"  - {key}: {file1[key]}")
-            final_result.append(f"  + {key}: {file2[key]}")
-        elif key in file1 and key not in file2:
-            final_result.append(f"  - {key}: {file1[key]}")
-        elif key in file2 and key not in file1:
-            final_result.append(f"  + {key}: {file2[key]}")
-
-    final_result.append("}")
+def generate_diff(file_path1, file_path2, format=None):
+    # TODO сделать разные функции на формат и развести в else if
+    if format == "stylish":
+        print(format)
+        file1 = get_data_from_file(file_path1)
+        file2 = get_data_from_file(file_path2)
+        final_result = flat_diff(file1, file2)
+    else:
+        final_result = ["lox", "pidr"]
     return '\n'.join(final_result)
 
 
