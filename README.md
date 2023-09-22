@@ -12,4 +12,4 @@
 
 # Пример использования
 
-[![asciicast](https://asciinema.org/a/80ilYUhwZeWGp5bhTGzl7JZLi.svg)](https://asciinema.org/a/80ilYUhwZeWGp5bhTGzl7JZLi)
+[![asciicast](https://asciinema.org/a/az1xRy7EXWdPvPNxVrKmYU76p.svg)](https://asciinema.org/a/az1xRy7EXWdPvPNxVrKmYU76p)
