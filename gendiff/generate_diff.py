@@ -4,10 +4,9 @@ import yaml
 from gendiff.flat import flat_diff
 
 
-def generate_diff(file_path1, file_path2, format=None):
+def generate_diff(file_path1, file_path2, format="stylish"):
     # TODO сделать разные функции на формат и развести в else if
     if format == "stylish":
-        print(format)
         file1 = get_data_from_file(file_path1)
         file2 = get_data_from_file(file_path2)
         final_result = flat_diff(file1, file2)
