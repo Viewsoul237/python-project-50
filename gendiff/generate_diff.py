@@ -4,12 +4,12 @@ import yaml
 
 
 def generate_diff(file_path1, file_path2):
-    file1 = define_format(file_path1)
-    file2 = define_format(file_path2)
-    result = file1 | file2
+    file1 = get_data_from_file(file_path1)
+    file2 = get_data_from_file(file_path2)
+    merged_files = file1 | file2
     final_result = ["{"]
 
-    for key in sorted(result.keys()):
+    for key in sorted(merged_files.keys()):
         if file1.get(key) == file2.get(key):
             final_result.append(f"    {key}: {file1[key]}")
         elif key in file1 and key in file2:
@@ -19,11 +19,12 @@ def generate_diff(file_path1, file_path2):
             final_result.append(f"  - {key}: {file1[key]}")
         elif key in file2 and key not in file1:
             final_result.append(f"  + {key}: {file2[key]}")
+
     final_result.append("}")
     return '\n'.join(final_result)
 
 
-def define_format(file_path):
+def get_data_from_file(file_path):
     with open(file_path) as file:
         if file_path.endswith("json"):
             json_data = json.load(file)

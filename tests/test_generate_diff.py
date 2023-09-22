@@ -18,5 +18,5 @@ with open(os.path.abspath("tests/fixtures/result")) as file:
         (file1yaml, file2yaml),
     ]
 )
-def test_generate_diff(file_1, file_2, ):
+def test_generate_diff(file_1, file_2):
     assert generate_diff(file_1, file_2) == expected
