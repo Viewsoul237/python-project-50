@@ -12,7 +12,7 @@ def arguments_parser():
     # Optional arguments
     parser.add_argument('-f', '--format',
                         default="stylish",
-                        choices=['stylish', ' plain', ' json'],
+                        choices=['stylish', 'plain', 'json'],
                         help='set format of output')
 
     args = parser.parse_args()

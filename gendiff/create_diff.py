@@ -36,5 +36,5 @@ def create_diff(data_file1, data_file2):
         children = dict([('key', key)])
         # print(children)
         children.update(key_changes(data_file1, data_file2, key))
-        diff.append(children)    
+        diff.append(children)
     return diff

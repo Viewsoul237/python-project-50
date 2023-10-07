@@ -14,7 +14,7 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
         final_result = format_stylish(data)
     else:
         final_result = ["lox", "pidr"]
-    return '\n'.join(final_result)
+    return final_result
 
 
 def get_data_from_file(file_path):
