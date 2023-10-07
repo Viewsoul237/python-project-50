@@ -7,26 +7,34 @@ from gendiff import generate_diff
     [
         # Testing flat files (json/yml)
         (
-            "tests/fixtures/file1.json",
-            "tests/fixtures/file2.yml",
-            "stylish",
-            "tests/fixtures/result"
+                "tests/fixtures/file1.json",
+                "tests/fixtures/file2.yml",
+                "stylish",
+                "tests/fixtures/result"
         ),
 
         # Testing flat files (yaml/json)
         (
-            "tests/fixtures/file1.yaml",
-            "tests/fixtures/file2.json",
-            "stylish",
-            "tests/fixtures/result"
+                "tests/fixtures/file1.yaml",
+                "tests/fixtures/file2.json",
+                "stylish",
+                "tests/fixtures/result"
         ),
 
         # Testing nested files (json/json)
         (
-            "tests/fixtures/nested1.json",
-            "tests/fixtures/nested2.json",
-            "stylish",
-            "tests/fixtures/nested_result"
+                "tests/fixtures/nested1.json",
+                "tests/fixtures/nested2.json",
+                "stylish",
+                "tests/fixtures/nested_result"
+        ),
+
+        # Testing nested files (yml/json)
+        (
+                "tests/fixtures/nested1.yml",
+                "tests/fixtures/nested2.json",
+                "stylish",
+                "tests/fixtures/nested_result"
         ),
     ]
 )
@@ -34,6 +42,3 @@ def test_generate_diff(file_1, file_2, format, result):
     with open(result) as file:
         expected = file.read()
         assert generate_diff(file_1, file_2, format) == expected
-
-# def test_generate_diff_nested():
-#     assert generate_diff(file1nested, file2nested, format) == flat_expected
