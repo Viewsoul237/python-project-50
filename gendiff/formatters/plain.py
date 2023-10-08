@@ -48,8 +48,8 @@ def format_plain(diff):
     def traverse_items(items, path):
         for item in items:
             item_path = os.path.join(path, item["key"])
-            item_path = item_path.replace("\\", ".") # для Windows
-            item_path = item_path.replace("/", ".") # для Linux            
+            item_path = os.path.normpath(item_path).replace("/", ".") # for Windows                 
+            
             if item['status'] == 'nested':
                 traverse_items(item['nested'], item_path)
             else:
