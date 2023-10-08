@@ -31,12 +31,12 @@ def get_data_from_file(file_path):
     return file
 
 
-def replace_bool_with_str(tree):
-    if isinstance(tree, dict):
-        for key, value in tree.items():
-            tree[key] = replace_bool_with_str(value)
-    elif str(tree) == "None":
-        tree = str("null")
-    elif isinstance(tree, bool):
-        tree = str(tree).lower()
-    return tree
+def replace_bool_with_str(elem):
+    if isinstance(elem, dict):
+        for key, value in elem.items():
+            elem[key] = replace_bool_with_str(value)
+    elif str(elem) == "None":
+        elem = str("null")
+    elif isinstance(elem, bool):
+        elem = str(elem).lower()
+    return elem
