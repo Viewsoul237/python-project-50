@@ -1,38 +1,41 @@
 import os
+from gendiff.abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
+    get_new_value
 
 
-def checkout_complex(elem):
-    if isinstance(elem, (dict, list)):
+def make_value(item):
+    if isinstance(item, (dict, list)):
         return "[complex value]"
-    elif elem in ["true", "null", "false", "none"]:
-        return elem
-    return f"'{elem}'"
+    elif item in ["true", "null", "false", "none"]:
+        return item
+    return f"'{item}'"
 
 
 def format_plain(diff):
     lines = []
 
-    def traverse_items(items, path):
+    def walk(items, path):
         for item in items:
-            item_path = os.path.join(path, item["key"])
+            item_path = os.path.join(path, get_key(item))
             item_path = os.path.normpath(item_path).replace("/", ".")  # for Windows
-            if item['status'] == 'nested':
-                traverse_items(item['nested'], item_path)
+            if is_nested(item):
+                walk(get_nested(item), item_path)
             else:
                 lines.append(make_line(item, item_path))
 
-    traverse_items(diff, '')
+    walk(diff, '')
     lines = filter(None, lines)
     return "\n".join(lines)
 
 
 def make_line(item, path):
-    if item['status'] == 'added':
-        new_value = checkout_complex(item["new_value"])
+    status = get_status(item)
+    if status == 'added':
+        new_value = make_value(get_new_value(item))
         return f"Property '{path}' was added with value: {new_value}"
-    elif item['status'] == 'removed':
+    elif status == 'removed':
         return f"Property '{path}' was removed"
-    elif item['status'] == 'updated':
-        old_value = checkout_complex(item["old_value"])
-        new_value = checkout_complex(item["new_value"])
+    elif status == 'updated':
+        old_value = make_value(get_old_value(item))
+        new_value = make_value(get_new_value(item))
         return f"Property '{path}' was updated. From {old_value} to {new_value}"

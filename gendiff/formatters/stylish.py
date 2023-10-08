@@ -1,5 +1,8 @@
 from itertools import chain
 
+from gendiff.abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
+    get_new_value
+
 INDENT = '  '
 STEP_INDENT = '    '
 START_DEPTH = 0
@@ -20,34 +23,35 @@ def create_elem(diff, depth):
 
 
 def create_line(diff, depth):
-    key = diff.get("key")
-    status = diff.get("status")
+    key = get_key(diff)
+    status = get_status(diff)
     indent = f"{INDENT}{STEP_INDENT * depth}"
 
     if status == "equal":
-        old_value = diff.get("old_value")
+        old_value = get_old_value(diff)
         value = create_value(old_value, depth)
         return f"{indent}  {key}: {value}"
 
     elif status == "added":
-        new_value = diff.get("new_value")
+        new_value = get_new_value(diff)
         value = create_value(new_value, depth)
         return f"{indent}+ {key}: {value}"
 
     elif status == "removed":
-        old_value = diff.get("old_value")
+        old_value = get_old_value(diff)
         value = create_value(old_value, depth)
         return f"{indent}- {key}: {value}"
 
     elif status == "updated":
-        old_value = diff.get("old_value")
-        new_value = diff.get("new_value")
+        old_value = get_old_value(diff)
         value1 = create_value(old_value, depth)
+
+        new_value = get_new_value(diff)
         value2 = create_value(new_value, depth)
         return f"{indent}- {key}: {value1}\n{indent}+ {key}: {value2}"
 
-    else:  # nested
-        nested = diff.get("nested")
+    elif is_nested(diff):
+        nested = get_nested(diff)
         value = create_value(nested, depth)
         return f"{indent}  {key}: {value}"
 
