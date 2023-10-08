@@ -1,8 +1,8 @@
 import json
-import yaml
 
+import yaml
 from gendiff.create_diff import create_diff
-from gendiff.formatters import format_stylish
+from gendiff.formatters import format_stylish, format_plain
 
 
 def generate_diff(file_path1, file_path2, format_name="stylish"):
@@ -10,10 +10,13 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
     file1 = get_data_from_file(file_path1)
     file2 = get_data_from_file(file_path2)
     data = create_diff(file1, file2)
+
     if format_name == "stylish":
         final_result = format_stylish(data)
+    elif format_name == "plain":
+        final_result = format_plain(data)
     else:
-        final_result = ["lox", "pidr"]
+        final_result = ["common"]
     return final_result
 
 
