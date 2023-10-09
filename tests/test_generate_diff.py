@@ -44,6 +44,14 @@ from gendiff import generate_diff
                 "plain",
                 "tests/fixtures/flat_result",
         ),
+
+        # №6 Testing nested files (yml/yaml) # json output
+        (
+                "tests/fixtures/nested1.yml",
+                "tests/fixtures/nested2.yaml",
+                "json",
+                "tests/fixtures/json_result",
+        ),
     ]
 )
 def test_generate_diff(file_1, file_2, format, result):

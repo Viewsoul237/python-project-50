@@ -14,15 +14,15 @@ def format_stylish(diff):
 
 
 def create_elem(diff, depth):
-    lines = [create_line(elem, depth) if isinstance(elem, dict) else
-             create_line({"key": elem, "status": "equal", "old_value": diff.get(elem)}, depth)
+    lines = [make_line(elem, depth) if isinstance(elem, dict) else
+             make_line({"key": elem, "status": "equal", "old_value": diff.get(elem)}, depth)
              for elem in diff]
 
     final_result = chain("{", lines, [f"{STEP_INDENT * depth}" + "}"])
     return "\n".join(final_result)
 
 
-def create_line(diff, depth):
+def make_line(diff, depth):
     key = get_key(diff)
     status = get_status(diff)
     indent = f"{INDENT}{STEP_INDENT * depth}"
