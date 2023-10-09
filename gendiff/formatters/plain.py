@@ -3,15 +3,13 @@ import os
 from gendiff.abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
 
-BOOLEAN_VALUES = ["true", "null", "false"]
+BOOLEAN_VALUES = ["true", "null", "false", 0]
 
 
 def make_value(item):
     if isinstance(item, (dict, list)):
         return "[complex value]"
     elif item in BOOLEAN_VALUES:
-        return item
-    elif item == "0":
         return item
     return f"'{item}'"
 
