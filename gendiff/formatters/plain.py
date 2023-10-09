@@ -11,6 +11,8 @@ def make_value(item):
         return "[complex value]"
     elif item in BOOLEAN_VALUES:
         return item
+    elif item in  ["0", "none"]:
+        return item
     return f"'{item}'"
 
 
