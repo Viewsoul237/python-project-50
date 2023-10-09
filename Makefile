@@ -1,5 +1,5 @@
 install:
-	poetry install
+	poetry install --no-dev
 
 test:
 	poetry run pytest

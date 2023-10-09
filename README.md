@@ -1,6 +1,6 @@
+<a name="readme-top"></a>
 [![Actions Status](https://github.com/Viewsoul237/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/Viewsoul237/python-project-50/actions)
 [![Actions Status](https://github.com/Viewsoul237/python-project-50/actions/workflows/pyci.yml/badge.svg)](https://github.com/Viewsoul237/python-project-50/actions)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/1bc0ca1e3fa3f4d83705/maintainability)](https://codeclimate.com/github/Viewsoul237/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1bc0ca1e3fa3f4d83705/test_coverage)](https://codeclimate.com/github/Viewsoul237/python-project-50/test_coverage)
 
@@ -32,7 +32,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Dependencies</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -58,13 +58,13 @@
 
 ### Installation
 
-#### 1. Using pip [Демонстрация](https://asciinema.org/a/3W9d4bSFyOAAjThDFNvm0rT3F)
+#### 1. Using pip [Демонстрация](https://asciinema.org/a/MwxcwiKeeYnqhAfq5asKOGTuY)
 
 ```
 pip install --user git+https://github.com/Viewsoul237/python-project-50
 ```
 
-#### 2. Using poetry [Демонстрация](https://asciinema.org/a/3W9d4bSFyOAAjThDFNvm0rT3F)
+#### 2. Using poetry [Демонстрация](https://asciinema.org/a/ShWliOs89DVj8a396XvhevHzD)
 1. Clone the repo
    ```
    git clone https://github.com/Viewsoul237/python-project-50.git
@@ -72,7 +72,7 @@ pip install --user git+https://github.com/Viewsoul237/python-project-50
    ```
 2. Install dependencies
    ```
-   poetry install
+   make install
    ```
 3. Install Gendiff
    ```
