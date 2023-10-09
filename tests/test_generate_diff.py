@@ -50,7 +50,7 @@ from gendiff import generate_diff
             "tests/fixtures/nested1.yml",
             "tests/fixtures/nested2.yaml",
             "json",
-            "tests/fixtures/json_result",
+            "tests/fixtures/json_result.json",
         ),
     ]
 )
