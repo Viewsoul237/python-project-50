@@ -1,4 +1,17 @@
-def key_changes(first_data, second_data, key):
+def create_diff(first_file_data, second_file_data):
+    keys = sorted(first_file_data.keys() | second_file_data.keys())
+    diff = []
+    # print(keys)
+
+    for key in keys:
+        children = dict([('key', key)])
+        # print(children)
+        children.update(make_differences_in_keys(first_file_data, second_file_data, key))
+        diff.append(children)
+    return diff
+
+
+def make_differences_in_keys(first_data, second_data, key):
     result = {}
     first_value = first_data.get(key)
     second_value = second_data.get(key)
@@ -25,16 +38,3 @@ def key_changes(first_data, second_data, key):
         result["new_value"] = second_value
 
     return result
-
-
-def create_diff(data_file1, data_file2):
-    keys = sorted(data_file1.keys() | data_file2.keys())
-    diff = []
-    # print(keys)
-
-    for key in keys:
-        children = dict([('key', key)])
-        # print(children)
-        children.update(key_changes(data_file1, data_file2, key))
-        diff.append(children)
-    return diff

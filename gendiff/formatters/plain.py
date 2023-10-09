@@ -8,7 +8,6 @@ BOOLEAN_VALUES = ["true", "null", "false", "none"]
 
 def make_value(item):
     if isinstance(item, (dict, list)):
-
         return "[complex value]"
     elif item in BOOLEAN_VALUES:
         return item
