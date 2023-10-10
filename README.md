@@ -114,7 +114,7 @@ options:
    gendiff -f plain file1_path.json
    ```
 
-[Demonstration plain](https://asciinema.org/a/ShWliOs89DVj8a396XvhevHzD)
+[Demonstration plain](https://asciinema.org/a/HEYFbGEsXyYWRi9evvxCPTMwE)
 ![](/images/plain.png)
 
 
