@@ -37,11 +37,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -109,7 +105,7 @@ options:
 ```
 <br></p>
 *"Specify the absolute path to the file.*
-### 1. Output as PLAIN format
+### 1. PLAIN format
    ```
    gendiff -f plain file1.json file2.json
    gendiff --format plain file1.json file2.json 
@@ -120,7 +116,7 @@ options:
 ![](/images/plain.png)
 
 
-### 2. Output as STYLISH format
+### 2. STYLISH format
 Stylish format is by default, but you can specify it explicitly.
    ```
    gendiff --format stylish file1.json file2.json
@@ -133,7 +129,7 @@ Stylish format is by default, but you can specify it explicitly.
 ![](/images/stylish.png)
 
 
-### 3. Output as JSON format
+### 3. JSON format
 Structured format output is often required, for example, in json.
 This allows other programs to utilize your output for their functionality.
    ```
