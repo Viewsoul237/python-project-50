@@ -72,7 +72,7 @@ pip install --user git+https://github.com/Viewsoul237/python-project-50
    ```
 2. Install dependencies
    ```
-   make install
+   make install-dependencies
    ```
 3. Install Gendiff
    ```
@@ -87,6 +87,38 @@ pip install --user git+https://github.com/Viewsoul237/python-project-50
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+```
+usage: gendiff [-h] [-f FORMAT] first_file second_file
+
+Compares two configuration files and shows a difference.
+
+positional arguments:
+  first_file
+  second_file
+
+options:
+  -h, --help            show this help message and exit
+  -f FORMAT, --format FORMAT
+                        set format of output (default: stylish).
+                        Formats: {stylish, plain, json}.
+
+```
+<br></p>
+*"Specify the absolute path to the file.*
+### 1. Output PLAIN format
+   ```
+   gendiff -f plain file1_path.json
+   ```
+
+[Demonstration plain](https://asciinema.org/a/ShWliOs89DVj8a396XvhevHzD)
+![](/images/plain.png)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 # Вычислитель отличий
 
 Программа, определяющую разницу между двумя структурами данных.

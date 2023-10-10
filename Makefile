@@ -1,4 +1,7 @@
 install:
+	poetry install
+
+install-dependencies:
 	poetry install --no-dev
 
 test:
