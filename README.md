@@ -109,20 +109,57 @@ options:
 ```
 <br></p>
 *"Specify the absolute path to the file.*
-### 1. Output PLAIN format
+### 1. Output as PLAIN format
    ```
-   gendiff -f plain file1_path.json
+   gendiff -f plain file1.json file2.json
+   gendiff --format plain file1.json file2.json 
    ```
 
-[Demonstration plain](https://asciinema.org/a/HEYFbGEsXyYWRi9evvxCPTMwE)
+[Demonstration plain](https://asciinema.org/a/oxog97znofEhp8TcPxV2Q4bDe)
+<br></p>
 ![](/images/plain.png)
 
 
+### 2. Output as STYLISH format
+Stylish format is by default, but you can specify it explicitly.
+   ```
+   gendiff --format stylish file1.json file2.json
+   gendiff -f stylish file1.yaml file2.json
+   gendiff file1.json file2.yml   
+   ```
+
+[Demonstration stylish](https://asciinema.org/a/nVDDWGMrCqg2GFkHR4OMrdSsL)
+<br></p>
+![](/images/stylish.png)
+
+
+### 3. Output as JSON format
+Structured format output is often required, for example, in json.
+This allows other programs to utilize your output for their functionality.
+   ```
+   gendiff --format json file1.yaml file2.json
+   gendiff -f json file1.yaml file2.json 
+   ```
+
+[Demonstration json](https://asciinema.org/a/o5WnxRzOy55WZnGIWUVdrKeRB)
+<br></p>
+
+![](/images/json.png)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-# Вычислитель отличий
 
-Программа, определяющую разницу между двумя структурами данных.
 
-# Пример использования
 
-[![asciicast](https://asciinema.org/a/az1xRy7EXWdPvPNxVrKmYU76p.svg)](https://asciinema.org/a/az1xRy7EXWdPvPNxVrKmYU76p)
+<!-- CONTACT -->
+## Contact
+
+Andrey Yudakov - [telegram](https://t.me/viewsoul237) - viewsoul91@gmail.com
+
+Project Link: [https://github.com/Viewsoul237/python-project-50](https://github.com/Viewsoul237/python-project-50)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
