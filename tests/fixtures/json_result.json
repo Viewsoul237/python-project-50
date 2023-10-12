@@ -6,7 +6,7 @@
             {
                 "key": "follow",
                 "status": "added",
-                "new_value": "false"
+                "new_value": false
             },
             {
                 "key": "setting1",
@@ -21,8 +21,8 @@
             {
                 "key": "setting3",
                 "status": "updated",
-                "old_value": "true",
-                "new_value": "null"
+                "old_value": true,
+                "new_value": null
             },
             {
                 "key": "setting4",

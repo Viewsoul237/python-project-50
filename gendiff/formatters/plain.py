@@ -3,15 +3,18 @@ import os
 from gendiff.diff_abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
 
-BOOLEAN_VALUES = ["true", "null", "false", 0]
 
+def resolve_value(value):
+    if isinstance(value, str):
+        return f"'{value}'"
 
-def make_value(item):
-    if isinstance(item, (dict, list)):
-        return "[complex value]"
-    elif item in BOOLEAN_VALUES:
-        return item
-    return f"'{item}'"
+    elif isinstance(value, dict):
+        return '[complex value]'
+
+    return str(value). \
+        replace('True', 'true'). \
+        replace('False', 'false'). \
+        replace('None', 'null')
 
 
 def format_plain(diff):
@@ -34,11 +37,11 @@ def format_plain(diff):
 def make_line(item, path):
     status = get_status(item)
     if status == 'added':
-        new_value = make_value(get_new_value(item))
+        new_value = resolve_value(get_new_value(item))
         return f"Property '{path}' was added with value: {new_value}"
     elif status == 'removed':
         return f"Property '{path}' was removed"
     elif status == 'updated':
-        old_value = make_value(get_old_value(item))
-        new_value = make_value(get_new_value(item))
+        old_value = resolve_value(get_old_value(item))
+        new_value = resolve_value(get_new_value(item))
         return f"Property '{path}' was updated. From {old_value} to {new_value}"

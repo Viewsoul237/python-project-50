@@ -23,20 +23,8 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
 def get_data_from_file(file_path):
     with open(file_path) as file:
         if file_path.endswith("json"):
-            json_data = json.load(file)
-            file = replace_bool_with_str(json_data)
+            file = json.load(file)
         else:
-            yaml_data = yaml.load(file, Loader=yaml.Loader)
-            file = replace_bool_with_str(yaml_data)
+            file = yaml.load(file, Loader=yaml.Loader)
+
     return file
-
-
-def replace_bool_with_str(elem):
-    if isinstance(elem, dict):
-        for key, value in elem.items():
-            elem[key] = replace_bool_with_str(value)
-    elif str(elem) == "None":
-        elem = str("null")
-    elif isinstance(elem, bool):
-        elem = str(elem).lower()
-    return elem
