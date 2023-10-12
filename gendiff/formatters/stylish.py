@@ -60,8 +60,9 @@ def make_line(diff, depth):
 def resolve_value(diff, depth):
     if isinstance(diff, (dict, list)):
         return format_diff(diff, depth + STEP_INSIDE)
-    elif (diff == 0 or diff == 1) and not isinstance(diff, bool):
-        return diff
-    elif diff in ITEMS_TO_CHECK:
-        return ITEMS_TO_CHECK[diff]
-    return diff
+    return check_and_modify(diff)
+
+
+def check_and_modify(value):
+    is_none_or_bool = isinstance(value, bool) or value is None
+    return ITEMS_TO_CHECK.get(value) if is_none_or_bool else value
