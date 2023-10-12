@@ -1,7 +1,7 @@
 import json
 
 import yaml
-from gendiff.create_diff import create_diff
+from gendiff.diff_abstraction import create_diff
 from gendiff.formatters import format_stylish, format_plain, format_json
 
 
