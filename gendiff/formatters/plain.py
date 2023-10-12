@@ -3,6 +3,8 @@ import os
 from gendiff.diff_abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
 
+ITEMS_TO_CHECK = {True: "true", False: "false", None: "null"}
+
 
 def resolve_value(value):
     if isinstance(value, str):
@@ -11,10 +13,7 @@ def resolve_value(value):
     elif isinstance(value, dict):
         return '[complex value]'
 
-    return str(value). \
-        replace('True', 'true'). \
-        replace('False', 'false'). \
-        replace('None', 'null')
+    return ITEMS_TO_CHECK[value]
 
 
 def format_plain(diff):

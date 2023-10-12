@@ -7,6 +7,7 @@ INDENT = '  '
 STEP_INDENT = '    '
 START_DEPTH = 0
 STEP_INSIDE = 1
+ITEMS_TO_CHECK = {True: "true", False: "false", None: "null"}
 
 
 def format_stylish(diff):
@@ -59,4 +60,6 @@ def make_line(diff, depth):
 def resolve_value(diff, depth):
     if isinstance(diff, (dict, list)):
         return format_diff(diff, depth + STEP_INSIDE)
-    return str(diff).replace('True', 'true').replace('False', 'false').replace('None', 'null')
+    elif diff in ITEMS_TO_CHECK:
+        return ITEMS_TO_CHECK[diff]
+    return str(diff)
