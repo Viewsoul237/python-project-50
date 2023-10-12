@@ -60,14 +60,8 @@ def make_line(diff, depth):
 def resolve_value(diff, depth):
     if isinstance(diff, (dict, list)):
         return format_diff(diff, depth + STEP_INSIDE)
-    #  так работает но выглядит глупо. не получается
-    #  красиво победить ошибки из-за  1 == True и 0 == False
-    # elif (diff == 0 or diff == 1) and not isinstance(diff, bool):
-    #     return diff
-    # elif diff in ITEMS_TO_CHECK:
-    #     return ITEMS_TO_CHECK[diff]
-    # return diff
-    return str(diff). \
-        replace('True', 'true'). \
-        replace('False', 'false'). \
-        replace('None', 'null')
+    elif (diff == 0 or diff == 1) and not isinstance(diff, bool):
+        return diff
+    elif diff in ITEMS_TO_CHECK:
+        return ITEMS_TO_CHECK[diff]
+    return diff
