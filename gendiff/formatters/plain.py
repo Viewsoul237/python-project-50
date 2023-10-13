@@ -2,7 +2,7 @@ import os
 
 from gendiff.diff_abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
-from gendiff.formatters.stylish import check_and_modify
+from gendiff.formatters.utils import check_and_modify
 
 
 def resolve_value(value):
