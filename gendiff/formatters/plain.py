@@ -2,7 +2,7 @@ import os
 
 from gendiff.diff_abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
-from gendiff.formatters.utils import check_and_modify
+from gendiff.formatters.utils import resolve_none_and_boolean
 
 
 def resolve_value(value):
@@ -12,7 +12,7 @@ def resolve_value(value):
     elif isinstance(value, dict):
         return '[complex value]'
 
-    return check_and_modify(value)
+    return resolve_none_and_boolean(value)
 
 
 def format_plain(diff):

@@ -2,7 +2,7 @@ from itertools import chain
 
 from gendiff.diff_abstraction import get_status, get_key, get_nested, is_nested, get_old_value, \
     get_new_value
-from gendiff.formatters.utils import check_and_modify
+from gendiff.formatters.utils import resolve_none_and_boolean
 
 INDENT = '  '
 STEP_INDENT = '    '
@@ -60,4 +60,4 @@ def make_line(diff, depth):
 def resolve_value(diff, depth):
     if isinstance(diff, (dict, list)):
         return format_diff(diff, depth + STEP_INSIDE)
-    return check_and_modify(diff)
+    return resolve_none_and_boolean(diff)
